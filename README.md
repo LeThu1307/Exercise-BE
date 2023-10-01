@@ -10,4 +10,4 @@
 # Setup
 Run: <br />
 <li>mvn package<br />
-<li></li>mvn spring-boot:run<br />
+<li>mvn spring-boot:run<br />
