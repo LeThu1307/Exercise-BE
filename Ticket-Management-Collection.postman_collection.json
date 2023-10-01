@@ -1,0 +1,679 @@
+{
+	"info": {
+		"_postman_id": "8a690779-6c5b-405a-a1dd-c1632b46b0d0",
+		"name": "Ticket-Management-Collection",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "7135863"
+	},
+	"item": [
+		{
+			"name": "get list users",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"//Verify Response Status\r",
+							"pm.test(\"Response is ok\",function(){\r",
+							"   pm.response.to.have.status(200); \r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{url}}/users",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"users"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "create admin user",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"//Verify Response Status\r",
+							"pm.test(\"Response is ok\",function(){\r",
+							"   pm.response.to.have.status(200); \r",
+							"});\r",
+							"\r",
+							"//Get Corporate Client\r",
+							"var jsonData = JSON.parse(responseBody);\r",
+							"postman.setEnvironmentVariable(\"adminId\",(jsonData.id));\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"username\": \"admin\",\r\n    \"email\": \"admin@gmail.com\",\r\n    \"userRole\": \"ADMINISTRATOR\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/users",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"users"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "create BA user",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"//Verify Response Status\r",
+							"pm.test(\"Response is ok\",function(){\r",
+							"   pm.response.to.have.status(200); \r",
+							"});\r",
+							"\r",
+							"//Get Corporate Client\r",
+							"var jsonData = JSON.parse(responseBody);\r",
+							"postman.setEnvironmentVariable(\"baUserId\",(jsonData.id));\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"username\": \"An\",\r\n    \"email\": \"anna@gmail.com\",\r\n    \"userRole\": \"BA\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/users",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"users"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "create user",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"//Verify Response Status\r",
+							"pm.test(\"Response is ok\",function(){\r",
+							"   pm.response.to.have.status(200); \r",
+							"});\r",
+							"\r",
+							"//Get Corporate Client\r",
+							"var jsonData = JSON.parse(responseBody);\r",
+							"postman.setEnvironmentVariable(\"userid\",(jsonData.id));\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"username\": \"thule\",\r\n    \"email\": \"thule@gmail.com\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/users",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"users"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get user by user id",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"//Verify Response Status\r",
+							"pm.test(\"Response is ok\",function(){\r",
+							"   pm.response.to.have.status(200); \r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{url}}/users/{{userid}}",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"users",
+						"{{userid}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "update user",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"//Verify Response Status\r",
+							"pm.test(\"Response is ok\",function(){\r",
+							"   pm.response.to.have.status(200); \r",
+							"});\r",
+							"\r",
+							"//Get Corporate Client\r",
+							"var jsonData = JSON.parse(responseBody);\r",
+							"postman.setEnvironmentVariable(\"userid\",(jsonData.id));\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"userId\": {{userid}},\r\n    \"username\": \"thuthu\",\r\n    \"email\": \"thuthu@gmail.com\",\r\n    \"userRole\": \"DEVELOPER\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/users/{{userid}}",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"users",
+						"{{userid}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get tickets list by user id",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"//Verify Response Status\r",
+							"pm.test(\"Response is ok\",function(){\r",
+							"   pm.response.to.have.status(200); \r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{url}}/users/{{userid}}/tickets",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"users",
+						"{{userid}}",
+						"tickets"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "create ticket",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"//Verify Response Status\r",
+							"pm.test(\"Response is ok\",function(){\r",
+							"   pm.response.to.have.status(200); \r",
+							"});\r",
+							"\r",
+							"//Get Corporate Client\r",
+							"var jsonData = JSON.parse(responseBody);\r",
+							"postman.setEnvironmentVariable(\"ticketid\",(jsonData.id));\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"tittle\": \"Can not open home page\",\r\n    \"assigneeId\": {{userid}}\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/users/{{baUserId}}/tickets",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"users",
+						"{{baUserId}}",
+						"tickets"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get ticket by ticket id",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"//Verify Response Status\r",
+							"pm.test(\"Response is ok\",function(){\r",
+							"   pm.response.to.have.status(200); \r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{url}}/users/{{userid}}/tickets/{{ticketid}}",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"users",
+						"{{userid}}",
+						"tickets",
+						"{{ticketid}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "update ticket by ticket id",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"//Verify Response Status\r",
+							"pm.test(\"Response is ok\",function(){\r",
+							"   pm.response.to.have.status(200); \r",
+							"});\r",
+							"\r",
+							"//Get Corporate Client\r",
+							"var jsonData = JSON.parse(responseBody);\r",
+							"postman.setEnvironmentVariable(\"ticketid\",(jsonData.id));\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"id\": {{ticketid}},\r\n    \"tittle\": \"Can not open home page\",\r\n    \"description\": \"Getting 503 issue when accessing home page\",\r\n    \"assigneeId\": {{userid}},\r\n    \"reporterId\": {{baUserId}},\r\n    \"status\": \"INPROGRESS\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/users/{{userid}}/tickets/{{ticketid}}",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"users",
+						"{{userid}}",
+						"tickets",
+						"{{ticketid}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "delete ticket",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"//Verify Response Status\r",
+							"pm.test(\"Response is ok\",function(){\r",
+							"   pm.response.to.have.status(200); \r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{url}}/users/{{baUserId}}/tickets/{{ticketid}}",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"users",
+						"{{baUserId}}",
+						"tickets",
+						"{{ticketid}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "delete user",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"//Verify Response Status\r",
+							"pm.test(\"Response is ok\",function(){\r",
+							"   pm.response.to.have.status(200); \r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{url}}/users/{{userid}}",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"users",
+						"{{userid}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get list ticket by admin",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"//Verify Response Status\r",
+							"pm.test(\"Response is ok\",function(){\r",
+							"   pm.response.to.have.status(200); \r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{url}}/tickets",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"tickets"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "create ticket by admin",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"//Verify Response Status\r",
+							"pm.test(\"Response is ok\",function(){\r",
+							"   pm.response.to.have.status(200); \r",
+							"});\r",
+							"\r",
+							"//Get Corporate Client\r",
+							"var jsonData = JSON.parse(responseBody);\r",
+							"postman.setEnvironmentVariable(\"ticketid\",(jsonData.id));\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"tittle\": \"Field description is incorrect\",\r\n    \"assigneeId\": {{adminId}},\r\n    \"reporterId\": {{adminId}}\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/tickets",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"tickets"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get ticket detail by admin",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"//Verify Response Status\r",
+							"pm.test(\"Response is ok\",function(){\r",
+							"   pm.response.to.have.status(200); \r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"tittle\": \"Field description is incorrect\",\r\n    \"assigneeId\": {{adminId}},\r\n    \"reporterId\": {{adminId}}\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/tickets/{{ticketid}}",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"tickets",
+						"{{ticketid}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "update ticket by admin",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"//Verify Response Status\r",
+							"pm.test(\"Response is ok\",function(){\r",
+							"   pm.response.to.have.status(200); \r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"id\": {{ticketid}},\r\n    \"assigneeId\": {{baUserId}},\r\n    \"status\": \"COMPLETED\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/tickets/{{ticketid}}",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"tickets",
+						"{{ticketid}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "delete ticket by admin",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"//Verify Response Status\r",
+							"pm.test(\"Response is ok\",function(){\r",
+							"   pm.response.to.have.status(200); \r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{url}}/tickets/{{ticketid}}",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"tickets",
+						"{{ticketid}}"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
